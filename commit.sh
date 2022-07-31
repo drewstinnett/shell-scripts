@@ -16,4 +16,5 @@ SUMMARY=$(gum input --value "$TYPE$SCOPE: " --placeholder "Summary of this chang
 DESCRIPTION=$(gum write --placeholder "Details of this change")
 
 # Commit these changes
+gum style "$(git status)"
 gum confirm "Commit changes?" && git commit -m "$SUMMARY" -m "$DESCRIPTION"
