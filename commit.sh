@@ -4,6 +4,11 @@
 
 which gum &>/dev/null || { echo "gum not found. Please install gum. gum freakin rulez 🍬"; exit 1; }
 
+if [[ -z $(git status -uno --porcelain) ]]; then
+	echo "this branch is clean, no need to push..."
+	exit 2;
+fi;
+
 ## Add some styling here that's better with Solarized Light
 TYPE=$(gum choose --item.foreground=136 --selected.foreground=166 --cursor.foreground=160 "fix" "feat" "docs" "style" "refactor" "test" "chore" "revert")
 SCOPE=$(gum input --placeholder "scope")
